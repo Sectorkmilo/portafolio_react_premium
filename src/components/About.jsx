@@ -13,7 +13,7 @@ export default function About(){
             <ul className="space-y-3 text-gray-700">
               <li>• Formación y capacitación</li>
               <li>• Desarrollo de soluciones tecnológicas</li>
-              <li>• Gestión de proyectos y asesoría</li>
+              <li>• Gestión de proyectos</li>
             </ul>
           </div>
         </div>

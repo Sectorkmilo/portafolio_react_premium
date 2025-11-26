@@ -7,7 +7,7 @@ const profiles = [
     name: "Ángela María Lascarro Quinto",
     role: "Coordinadora",
     bio: "Trabajadora Social y Magíster en Gobierno y Políticas Públicas.",
-    photo: "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg" // -> puedes usar URLs o archivos locales en public/images
+    photo: "/images/angela.jpg" // -> puedes usar URLs o archivos locales en public/images
   },
   {
     id: 2,
