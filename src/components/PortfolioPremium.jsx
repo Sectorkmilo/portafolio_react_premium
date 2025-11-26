@@ -14,7 +14,7 @@ const profiles = [
     name: "Cristian Enrique Suárez Martínez",
     role: "Coordinador",
     bio: "Especialista en gestión empresarial con experiencia en respuesta humanitaria.",
-    photo: "/https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg"
+    photo: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg"
   },
   {
     id: 3,
