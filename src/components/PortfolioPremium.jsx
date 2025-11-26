@@ -4,24 +4,31 @@ import { motion } from "framer-motion";
 const profiles = [
   {
     id: 1,
-    name: "Ángela María Lascarro Quinto",
+    name: "Christian Camilo Chavarria",
     role: "Coordinadora",
     bio: "Trabajadora Social y Magíster en Gobierno y Políticas Públicas.",
-    photo: "/images/angela.jpg" // -> puedes usar URLs o archivos locales en public/images
+    photo: "/images/christian.jpg" // -> puedes usar URLs o archivos locales en public/images
   },
   {
     id: 2,
-    name: "Cristian Enrique Suárez Martínez",
+    name: "Camilo",
     role: "Coordinador",
     bio: "Especialista en gestión empresarial con experiencia en respuesta humanitaria.",
-    photo: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg"
+    photo: "/images/cristian.jpg"
   },
   {
     id: 3,
+    name: "Christian",
+    role: "Analista",
+    bio: "Profesional en análisis de datos con enfoque social.",
+    photo: "/images/camilo.jpg"
+  },
+  {
+    id: 4,
     name: "Laura Romero",
     role: "Analista",
     bio: "Profesional en análisis de datos con enfoque social.",
-    photo: "https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg"
+    photo: "/images/laura.jpg"
   }
 ];
 
