@@ -2,4 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --glass-bg: rgba(255,255,255,0.06);
+}
+
 .perspective { perspective: 1200px; }
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(255,255,255,0.06);
+}

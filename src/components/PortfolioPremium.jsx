@@ -1,20 +1,23 @@
-import { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 
 const profiles = [
   {
+    id: 1,
     name: "Ángela María Lascarro Quinto",
     role: "Coordinadora",
     bio: "Trabajadora Social y Magíster en Gobierno y Políticas Públicas.",
-    photo: "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg"
+    photo: "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg" // -> puedes usar URLs o archivos locales en public/images
   },
   {
+    id: 2,
     name: "Cristian Enrique Suárez Martínez",
     role: "Coordinador",
     bio: "Especialista en gestión empresarial con experiencia en respuesta humanitaria.",
-    photo: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg"
+    photo: "/https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg"
   },
   {
+    id: 3,
     name: "Laura Romero",
     role: "Analista",
     bio: "Profesional en análisis de datos con enfoque social.",
@@ -24,71 +27,96 @@ const profiles = [
 
 export default function PortfolioPremium() {
   const [index, setIndex] = useState(0);
+  const intervalRef = useRef(null);
+  const isHovering = useRef(false);
 
-  const next = () => setIndex((index + 1) % profiles.length);
-  const prev = () => setIndex((index - 1 + profiles.length) % profiles.length);
+  useEffect(() => {
+    startAutoplay();
+    window.addEventListener("keydown", handleKeys);
+    return () => {
+      stopAutoplay();
+      window.removeEventListener("keydown", handleKeys);
+    };
+  }, [index]);
+
+  function startAutoplay() {
+    stopAutoplay();
+    intervalRef.current = setInterval(() => {
+      if (!isHovering.current) setIndex(i => (i + 1) % profiles.length);
+    }, 3500);
+  }
+
+  function stopAutoplay() {
+    if (intervalRef.current) clearInterval(intervalRef.current);
+    intervalRef.current = null;
+  }
+
+  function handleKeys(e) {
+    if (e.key === "ArrowRight") setIndex(i => (i + 1) % profiles.length);
+    if (e.key === "ArrowLeft") setIndex(i => (i - 1 + profiles.length) % profiles.length);
+  }
+
+  function goTo(i) {
+    setIndex(i);
+  }
 
   return (
-    <div className="w-full min-h-screen bg-white text-black p-10 flex flex-col items-center">
-      <header className="text-center mb-16">
-        <h1 className="text-5xl font-extrabold">Equipo Profesional</h1>
-        <p className="text-gray-500 mt-2 text-lg max-w-2xl mx-auto">
-          Portafolio Premium con carrusel 3D animado con Framer Motion.
-        </p>
-      </header>
+    <section id="home" className="pt-24 pb-16 bg-[#080808] text-white">
+      <div className="max-w-6xl mx-auto px-6 flex flex-col items-center">
+        <header className="text-center mb-10">
+          <h1 className="text-4xl md:text-5xl font-extrabold">Equipo Profesional</h1>
+          <p className="text-gray-400 mt-2 max-w-2xl">Portafolio premium con carrusel 3D, autoplay y estilo glass/brand.</p>
+        </header>
 
-      <div className="relative w-[400px] h-[400px] perspective mb-10">
-        {profiles.map((person, i) => {
-          const offset = (i - index + profiles.length) % profiles.length;
-
-          return (
-            <motion.div
-              key={i}
-              className="absolute top-0 left-0 w-full h-full rounded-3xl overflow-hidden shadow-2xl"
-              initial={false}
-              animate={{
-                zIndex: offset === 0 ? 10 : -offset,
-                scale: offset === 0 ? 1 : 0.8,
-                opacity: offset === 0 ? 1 : 0.4,
-                rotateY: offset * 50,
-                x: offset * 180,
-              }}
-              transition={{ duration: 0.8, ease: "easeInOut" }}
-            >
-              <img
-                src={person.photo}
-                alt={person.name}
-                className="w-full h-full object-cover"
-              />
-            </motion.div>
-          );
-        })}
-      </div>
-
-      <div className="text-center">
-        <h2 className="text-3xl font-bold">{profiles[index].name}</h2>
-        <h3 className="text-purple-600 font-semibold text-lg">
-          {profiles[index].role}
-        </h3>
-        <p className="text-gray-600 max-w-xl mx-auto mt-2">
-          {profiles[index].bio}
-        </p>
-      </div>
-
-      <div className="flex gap-6 mt-8">
-        <button
-          onClick={prev}
-          className="px-6 py-2 bg-black text-white rounded-full shadow-lg"
+        <div
+          className="relative w-[320px] md:w-[480px] h-[320px] md:h-[480px] perspective"
+          onMouseEnter={() => { isHovering.current = true; }}
+          onMouseLeave={() => { isHovering.current = false; }}
         >
-          ◀ Anterior
-        </button>
-        <button
-          onClick={next}
-          className="px-6 py-2 bg-black text-white rounded-full shadow-lg"
-        >
-          Siguiente ▶
-        </button>
+          {profiles.map((p, i) => {
+            const offset = (i - index + profiles.length) % profiles.length;
+            // map offsets so active is 0
+            return (
+              <motion.div
+                key={p.id}
+                className="absolute top-0 left-0 w-full h-full rounded-2xl overflow-hidden shadow-2xl"
+                initial={false}
+                animate={{
+                  zIndex: offset === 0 ? 30 : 10 - offset,
+                  scale: offset === 0 ? 1 : 0.82,
+                  opacity: offset === 0 ? 1 : 0.35,
+                  rotateY: (offset - 0) * 40,
+                  x: (offset - 0) * 150,
+                }}
+                transition={{ duration: 0.7, ease: "easeInOut" }}
+              >
+                <img src={p.photo} alt={p.name} className="w-full h-full object-cover" />
+              </motion.div>
+            );
+          })}
+        </div>
+
+        {/* info + controls */}
+        <div className="text-center mt-6">
+          <h2 className="text-2xl font-bold">{profiles[index].name}</h2>
+          <h3 className="text-brand-gold font-semibold">{profiles[index].role}</h3>
+          <p className="text-gray-400 max-w-xl mx-auto mt-2">{profiles[index].bio}</p>
+
+          <div className="flex gap-4 items-center justify-center mt-6">
+            <button onClick={() => setIndex((index - 1 + profiles.length) % profiles.length)} className="px-4 py-2 rounded-full bg-white/8 hover:bg-white/12">◀</button>
+            <div className="flex gap-2 items-center">
+              {profiles.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => goTo(i)}
+                  className={`w-3 h-3 rounded-full ${i === index ? 'bg-brand-gold' : 'bg-white/30'}`}
+                />
+              ))}
+            </div>
+            <button onClick={() => setIndex((index + 1) % profiles.length)} className="px-4 py-2 rounded-full bg-white/8 hover:bg-white/12">▶</button>
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
   );
 }
