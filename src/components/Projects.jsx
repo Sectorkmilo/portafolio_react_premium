@@ -2,7 +2,6 @@ export default function Projects(){
   const projects = [
     {title:"Proyecto A", desc:"Vacaciones en la playa", img:"/images/proj1.jpg"},
     {title:"Proyecto B", desc:"Estudio de Música", img:"/images/proj2.jpg"}
-    {title:"Proyecto C", desc:"Musica relajante", img:"/images/proj3.jpg"}
   ];
   return (
     <section id="projects" className="py-16 bg-white text-black">
