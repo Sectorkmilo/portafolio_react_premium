@@ -2,7 +2,7 @@ export default function Contact(){
   return (
     <section id="contact" className="py-16 bg-[#0b0b0b] text-white">
       <div className="max-w-4xl mx-auto px-6">
-        <h2 className="text-3xl font-bold mb-4">Contacto</h2>
+        <h2 className="text-3xl font-bold mb-4">Contáctame</h2>
         <p className="text-gray-300 mb-6">Escríbenos para coordinar una reunión o solicitar información.</p>
 
         <form className="grid gap-4">
