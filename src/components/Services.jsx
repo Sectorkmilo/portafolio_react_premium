@@ -2,7 +2,7 @@ export default function Services(){
   const items = [
     {title: "Asesoría", desc: "Orientación técnica y metodológica."},
     {title: "Capacitación", desc: "Formación presencial y virtual."},
-    {title: "Desarrollo", desc: "Proyectos a medida y prototipos."}
+    {title: "Desarrollo", desc: "Proyectos a medida y creación de prototipos."}
   ];
   return (
     <section id="services" className="py-16 bg-[#0b0b0b] text-white">

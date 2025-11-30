@@ -11,7 +11,7 @@ export default function Contact(){
           <textarea className="p-3 rounded bg-white/6 border border-white/6 text-white" rows="4" placeholder="Mensaje"></textarea>
           <div className="flex gap-4">
             <button type="button" className="px-5 py-3 bg-brand-gold text-black rounded font-semibold">Enviar</button>
-            <a href="mailto:tu@correo.com" className="px-5 py-3 border rounded border-white/10">Enviar por correo</a>
+            <a href="mailto:camilo892009@gmail.com" className="px-5 py-3 border rounded border-white/10">Enviar por correo</a>
           </div>
         </form>
       </div>
