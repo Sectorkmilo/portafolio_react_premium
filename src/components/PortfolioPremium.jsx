@@ -72,7 +72,7 @@ export default function PortfolioPremium() {
       <div className="max-w-6xl mx-auto px-6 flex flex-col items-center">
         <header className="text-center mb-10">
           <h1 className="text-4xl md:text-5xl font-extrabold">Equipo Profesional</h1>
-          <p className="text-gray-400 mt-2 max-w-2xl">Portafolio premium con carrusel 3D, autoplay y estilo glass/brand.</p>
+          <p className="text-gray-400 mt-2 max-w-2xl">Este trabajo se desarrolla para el curso de Mantenimiento de Software con el profesor Jose Ruiz, sobre los comandos para el control de versiones con GitHub.</p>
         </header>
 
         <div
