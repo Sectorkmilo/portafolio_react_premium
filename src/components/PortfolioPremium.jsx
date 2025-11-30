@@ -5,8 +5,8 @@ const profiles = [
   {
     id: 1,
     name: "Christian Camilo Chavarria",
-    role: "Coordinadora",
-    bio: "Trabajadora Social y Magíster en Gobierno y Políticas Públicas.",
+    role: "Diseñador del proyecto",
+    bio: "Estudiante de Ingeniería de Software de 6to semestre",
     photo: "/images/christian.jpg" // -> puedes usar URLs o archivos locales en public/images
   },
   {
