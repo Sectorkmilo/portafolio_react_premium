@@ -7,25 +7,25 @@ const profiles = [
     name: "Christian Camilo Chavarria",
     role: "Diseñador del proyecto",
     bio: "Estudiante de Ingeniería de Software de 6to semestre",
-    photo: "/images/christian.jpg" // -> puedes usar URLs o archivos locales en public/images
+    photo: "/images/christian.jpg"
   },
   {
     id: 2,
-    name: "Camilo",
+    name: "Christian Camilo Chavarría",
     role: "Coordinador",
     bio: "Especialista en gestión empresarial con experiencia en respuesta humanitaria.",
     photo: "/images/cristian.jpg"
   },
   {
     id: 3,
-    name: "Christian",
-    role: "Analista",
-    bio: "Profesional en análisis de datos con enfoque social.",
+    name: "Christian Camilo Chavarria",
+    role: "Estudiante de 6to semestre de ingeniería de software",
+    bio: "Quiero graduarme el otro año.",
     photo: "/images/camilo.jpg"
   },
   {
     id: 4,
-    name: "Laura Romero",
+    name: "Christian Camilo Chavarria",
     role: "Analista",
     bio: "Profesional en análisis de datos con enfoque social.",
     photo: "/images/laura.jpg"
@@ -72,7 +72,10 @@ export default function PortfolioPremium() {
       <div className="max-w-6xl mx-auto px-6 flex flex-col items-center">
         <header className="text-center mb-10">
           <h1 className="text-4xl md:text-5xl font-extrabold">Equipo Profesional</h1>
-          <p className="text-gray-400 mt-2 max-w-2xl">Este trabajo se desarrolla para el curso de Mantenimiento de Software con el profesor Jose Ruiz, sobre los comandos para el control de versiones con GitHub.</p>
+          <p className="text-gray-400 mt-2 max-w-2xl">
+            Este trabajo se desarrolla para el curso de Mantenimiento de Software con el profesor Jose Ruiz,
+            sobre los comandos para el control de versiones con GitHub.
+          </p>
         </header>
 
         <div
@@ -82,7 +85,6 @@ export default function PortfolioPremium() {
         >
           {profiles.map((p, i) => {
             const offset = (i - index + profiles.length) % profiles.length;
-            // map offsets so active is 0
             return (
               <motion.div
                 key={p.id}
@@ -92,8 +94,8 @@ export default function PortfolioPremium() {
                   zIndex: offset === 0 ? 30 : 10 - offset,
                   scale: offset === 0 ? 1 : 0.82,
                   opacity: offset === 0 ? 1 : 0.35,
-                  rotateY: (offset - 0) * 40,
-                  x: (offset - 0) * 150,
+                  rotateY: offset * 40,
+                  x: offset * 150,
                 }}
                 transition={{ duration: 0.7, ease: "easeInOut" }}
               >
@@ -103,24 +105,55 @@ export default function PortfolioPremium() {
           })}
         </div>
 
-        {/* info + controls */}
+        {/* Info + Controls */}
         <div className="text-center mt-6">
           <h2 className="text-2xl font-bold">{profiles[index].name}</h2>
           <h3 className="text-brand-gold font-semibold">{profiles[index].role}</h3>
           <p className="text-gray-400 max-w-xl mx-auto mt-2">{profiles[index].bio}</p>
 
           <div className="flex gap-4 items-center justify-center mt-6">
-            <button onClick={() => setIndex((index - 1 + profiles.length) % profiles.length)} className="px-4 py-2 rounded-full bg-white/8 hover:bg-white/12">◀</button>
+            
+            {/* ⬅ Flecha Premium */}
+            <button
+              onClick={() => setIndex((index - 1 + profiles.length) % profiles.length)}
+              className="
+                group relative flex items-center justify-center 
+                w-12 h-12 rounded-full
+                bg-white/5 backdrop-blur-sm border border-white/10
+                hover:bg-brand-gold hover:border-brand-gold
+                transition-all duration-300
+              "
+            >
+              <span className="text-white group-hover:text-black text-2xl font-light">‹</span>
+            </button>
+
+            {/* Puntos de navegación */}
             <div className="flex gap-2 items-center">
               {profiles.map((_, i) => (
                 <button
                   key={i}
                   onClick={() => goTo(i)}
-                  className={`w-3 h-3 rounded-full ${i === index ? 'bg-brand-gold' : 'bg-white/30'}`}
+                  className={`w-3 h-3 rounded-full ${
+                    i === index ? "bg-brand-gold" : "bg-white/30"
+                  }`}
                 />
               ))}
             </div>
-            <button onClick={() => setIndex((index + 1) % profiles.length)} className="px-4 py-2 rounded-full bg-white/8 hover:bg-white/12">▶</button>
+
+            {/* ➡ Flecha Premium */}
+            <button
+              onClick={() => setIndex((index + 1) % profiles.length)}
+              className="
+                group relative flex items-center justify-center 
+                w-12 h-12 rounded-full
+                bg-white/5 backdrop-blur-sm border border-white/10
+                hover:bg-brand-gold hover:border-brand-gold
+                transition-all duration-300
+              "
+            >
+              <span className="text-white group-hover:text-black text-2xl font-light">›</span>
+            </button>
+
           </div>
         </div>
       </div>
