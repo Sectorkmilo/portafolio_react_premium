@@ -74,7 +74,7 @@ export default function PortfolioPremium() {
           <h1 className="text-4xl md:text-5xl font-extrabold">Equipo Profesional</h1>
           <p className="text-gray-400 mt-2 max-w-2xl">
             Este trabajo se desarrolla para el curso de Mantenimiento de Software con el profesor Jose Ruiz,
-            sobre los comandos para el control de versiones con GitHub.
+            sobre las técnicas de Mantenimiento de software.
           </p>
         </header>
 
