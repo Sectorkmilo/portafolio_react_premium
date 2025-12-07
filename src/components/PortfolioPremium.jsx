@@ -88,7 +88,7 @@ export default function PortfolioPremium() {
             return (
               <motion.div
                 key={p.id}
-                className="absolute top-0 left-0 w-full h-full rounded-2xl overflow-hidden shadow-2xl"
+                className="absolute top-0 left-0 w-full h-full rounded-2xl overflow-hidden shadow-2xl glow-gold"
                 initial={false}
                 animate={{
                   zIndex: offset === 0 ? 30 : 10 - offset,

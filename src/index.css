@@ -13,3 +13,43 @@
   -webkit-backdrop-filter: blur(6px);
   border: 1px solid rgba(255,255,255,0.06);
 }
+
+/* ========================================= */
+/*     🔥 BORDE BRILLANTE PREMIUM ADAPTADO   */
+/* ========================================= */
+@layer utilities {
+  .glow-gold {
+    
+  }
+
+  .glow-gold::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 1rem; /* ajusta si quieres esquinas más redondas */
+    background: linear-gradient(45deg, #D4AF37, #f7e7b0, #D4AF37);
+
+    /* Para que NO expanda la imagen */
+    padding: 10px;
+
+    /* Truco para dibujar solo el borde */
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+
+    /* Encima de la imagen pero sin bloquear eventos */
+    pointer-events: none;
+    z-index: 1;
+
+    /* Animación del brillo */
+    animation: glowSpin 4s linear infinite;
+    opacity: 0.9;
+  }
+
+  @keyframes glowSpin {
+    0%   { filter: hue-rotate(0deg); }
+    100% { filter: hue-rotate(360deg); }
+  }
+}
