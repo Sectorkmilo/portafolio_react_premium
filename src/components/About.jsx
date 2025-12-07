@@ -6,7 +6,7 @@ export default function About(){
         <div className="md:flex gap-8 items-center">
           <div className="md:w-1/2 glass p-6 rounded-xl">
             <p className="text-gray-800">
-              Este trabajo se desarrolla para el curso de Mantenimiento de Software con el profesor Jose Ruiz, sobre los comandos para el control de versiones con GitHub.
+              Este trabajo se desarrolla para el curso de Mantenimiento de Software con el profesor Jose Ruiz, sobre las técnicas de mantenimiento de software.
             </p>
           </div>
           <div className="md:w-1/2 mt-6 md:mt-0">
